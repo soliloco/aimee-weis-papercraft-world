@@ -30,7 +30,7 @@ function App() {
           .to("#canvas-container", {
             scale: 0.4,
             borderRadius: "32px",
-            transformOrigin: "center 40px",
+            transformOrigin: "center 160px",
             ...commonEase,
           })
           .to(
@@ -38,7 +38,7 @@ function App() {
             {
               scale: 0.4,
               borderRadius: "32px",
-              transformOrigin: "center 40px",
+              transformOrigin: "center 160px",
               ...commonEase,
             },
             "<",

@@ -106,6 +106,7 @@ export default function Model(props) {
         amplitude={0.1}
         speed={2}
         property={"scale"}
+        offset={0.2}
         position={nodes.Scene_2_Spring_2_Baked_Slime.position}
         base={1.1}
       >
@@ -118,8 +119,9 @@ export default function Model(props) {
       <AnimateMesh
         axis={"y"}
         amplitude={0.1}
-        speed={2}
+        speed={0.98}
         property={"scale"}
+        offset={0.12}
         position={nodes.Scene_2_Spring_2_Baked_Gnome.position}
         base={1.1}
       >
