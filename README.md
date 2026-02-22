@@ -18,4 +18,8 @@ This repo contains code of Aimee's Papercraft Portfolio for a Codrops article an
 
 # Areas of improvement / things to do
 
--
+- Lol clean up the code XDDDDDDDDDDDDDD!!!
+- Add some hover interactions
+- Add some cool paper animations with shapekeys
+- TSL SHADERS YESSURRRRR Y NOT!! CHANGE PAPER COLOR ON BUTTOn
+- MAJOR RESPONSIVE ISSUES XDDD
