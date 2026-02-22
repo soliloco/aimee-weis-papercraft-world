@@ -200,7 +200,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       summerWaveRef,
       summerWaveInnerWrapperRef,
-      "summerFront",
+      "summerWaveRef",
       offsets.summerWaveRef,
       progressMoveRanges.summer,
       scrollProgress,
