@@ -81,7 +81,6 @@ function App() {
             "<",
           );
 
-    // if panel was already open when timeline rebuilt, jump to end
     if (isInfoPanelOpen) tlRef.current.progress(1);
   }, [isMobile]);
 

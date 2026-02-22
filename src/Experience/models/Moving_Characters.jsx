@@ -13,6 +13,23 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { AnimateMesh } from "../components/AnimateMesh";
 
+const offsets = {
+  winterFrontCharacterRef: 0.0124,
+  winterSideCharacterRef: 0.0124,
+  springFrontCharacterRef: 0.235,
+  springSideCharacterRef: 0.235,
+  summerFrontCharacterRef: 0.49,
+  summerWaveRef: 0.49,
+  fallFrontCharacterRef: 0.74,
+};
+
+const progressMoveRanges = {
+  winter: { start: 0.02, end: 0.235 },
+  spring: { start: 0.235, end: 0.49 },
+  summer: { start: 0.49, end: 0.74 },
+  fall: { start: 0.74, end: 0.99 },
+};
+
 export default function Model(props) {
   const { nodes, materials } = useGLTF(
     "/models/Moving_Characters-transformed.glb",
@@ -72,23 +89,6 @@ export default function Model(props) {
   const winterShowingFront = useRef(true);
   const springShowingFront = useRef(true);
 
-  const offsets = {
-    winterFrontCharacterRef: 0.0124,
-    winterSideCharacterRef: 0.0124,
-    springFrontCharacterRef: 0.235,
-    springSideCharacterRef: 0.235,
-    summerFrontCharacterRef: 0.49,
-    summerWaveRef: 0.49,
-    fallFrontCharacterRef: 0.74,
-  };
-
-  const progressMoveRanges = {
-    winter: { start: 0.02, end: 0.235 },
-    spring: { start: 0.235, end: 0.49 },
-    summer: { start: 0.49, end: 0.74 },
-    fall: { start: 0.74, end: 0.99 },
-  };
-
   useEffect(() => {
     const map = [
       [winterFrontCharacterRef, offsets.winterFrontCharacterRef],
@@ -106,9 +106,12 @@ export default function Model(props) {
     });
   }, [curves]);
 
+  const visibilityStates = useRef({});
+
   const moveObjectOrCharacter = (
     ref,
     innerRef,
+    id,
     offset,
     range,
     scrollProgress,
@@ -116,37 +119,26 @@ export default function Model(props) {
     if (!ref.current) return;
     const { start, end } = range;
 
+    const shouldBeVisible = scrollProgress >= start && scrollProgress < end;
+
+    if (visibilityStates.current[id] !== shouldBeVisible) {
+      visibilityStates.current[id] = shouldBeVisible;
+      gsap.to(innerRef.current.position, {
+        y: shouldBeVisible ? 0.23 : -5,
+        duration: 1.5,
+        ease: "back.out(1.2)",
+        overwrite: "auto",
+      });
+    }
+
     const isALoop =
       Math.abs(scrollProgress - previousScrollProgress.current) > 0.5;
-
-    if (scrollProgress >= start) {
-      gsap.to(innerRef.current.position, {
-        y: 0.23,
-        duration: 1.5,
-        ease: "back.out(1.2)",
-      });
-    }
-    if (scrollProgress >= end) {
-      gsap.to(innerRef.current.position, {
-        y: -5,
-        duration: 1.5,
-        ease: "back.out(1.2)",
-      });
-    }
-    if (scrollProgress < start) {
-      gsap.to(innerRef.current.position, {
-        y: -5,
-        duration: 1.5,
-        ease: "back.out(1.2)",
-      });
-    }
 
     const clampedProgress = Math.min(Math.max(scrollProgress, start), end);
     const rangeProgress = (clampedProgress - start) / (end - start);
     const curveValue = offset + rangeProgress * (end - start);
 
     curves.movingCharactersCurve.getPointAt(curveValue, targetPosition.current);
-
     const tangent = curves.movingCharactersCurve.getTangentAt(curveValue);
 
     if (isALoop) {
@@ -156,16 +148,19 @@ export default function Model(props) {
     }
 
     targetLookAt.current.crossVectors(tangent, upVector.current);
-
     ref.current.lookAt(targetLookAt.current);
   };
 
   useFrame((state) => {
+    if (!curves?.movingCharactersCurve) return;
+
+    // console.log(gsap.globalTimeline.getChildren().length);
     const scrollProgress = useCurveProgressStore.getState().scrollProgress;
 
     moveObjectOrCharacter(
       winterFrontCharacterRef,
       winterFrontCharacterInnerWrapperRef,
+      "winterFront",
       offsets.winterFrontCharacterRef,
       progressMoveRanges.winter,
       scrollProgress,
@@ -173,6 +168,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       winterSideCharacterRef,
       winterSideCharacterInnerWrapperRef,
+      "winterSide",
       offsets.winterSideCharacterRef,
       progressMoveRanges.winter,
       scrollProgress,
@@ -180,6 +176,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       springFrontCharacterRef,
       springFrontCharacterInnerWrapperRef,
+      "springFront",
       offsets.springFrontCharacterRef,
       progressMoveRanges.spring,
       scrollProgress,
@@ -187,6 +184,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       springSideCharacterRef,
       springSideCharacterInnerWrapperRef,
+      "springSide",
       offsets.springSideCharacterRef,
       progressMoveRanges.spring,
       scrollProgress,
@@ -194,6 +192,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       summerFrontCharacterRef,
       summerFrontCharacterInnerWrapperRef,
+      "summerFront",
       offsets.summerFrontCharacterRef,
       progressMoveRanges.summer,
       scrollProgress,
@@ -201,6 +200,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       summerWaveRef,
       summerWaveInnerWrapperRef,
+      "summerFront",
       offsets.summerWaveRef,
       progressMoveRanges.summer,
       scrollProgress,
@@ -208,6 +208,7 @@ export default function Model(props) {
     moveObjectOrCharacter(
       fallFrontCharacterRef,
       fallFrontCharacterInnerWrapperRef,
+      "fallFront",
       offsets.fallFrontCharacterRef,
       progressMoveRanges.fall,
       scrollProgress,

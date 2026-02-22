@@ -10,8 +10,8 @@ import CustomCamera from "./components/CustomCamera";
 const Scene = () => {
   return (
     <>
-      <Suspense>
-        <CustomCamera />
+      <CustomCamera />
+      <Suspense fallback={null}>
         <MovingCharacters />
         <Winter />
         <Spring />
