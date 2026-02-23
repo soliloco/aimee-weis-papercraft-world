@@ -22,6 +22,8 @@ This repo contains code of Aimee's Papercraft Portfolio for a Codrops article an
 - [San Fransico, California Image is from Maarten van den Heuvel](https://unsplash.com/photos/golden-gate-bridge-during-daytime-gZXx8lKAb7Y)
 - [Boston, Massachusetts Image is from Jimmy Woo](https://unsplash.com/photos/a-view-of-a-city-from-across-the-water-SUMtPksZXBE)
 - [Shanghai, China Image is from evening_tao](https://www.freepik.com/free-photo/shanghai-skyline-sunny-day-china_1175772.htm#fromView=keyword&page=1&position=2&uuid=ca27e057-0f78-4ebf-a82c-8ecec217205d&query=Shanghai+china)
+- [Sentrie for the Blender Tip](https://github.com/sen-trie)
+- [Kqnzy for the Blender Tip](https://github.com/Kqnzy)
 
 # Extra info
 
