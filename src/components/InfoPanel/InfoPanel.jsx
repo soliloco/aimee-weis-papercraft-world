@@ -39,10 +39,9 @@ const InfoPanel = () => {
           <div className="info-box-title">Credits:</div>
 
           <p className="info-intro">
-            This repo contains code of Aimee's Papercraft Portfolio for a
-            Codrops article and YouTube tutorial!! Name and details are
-            anonymoized for privacy. See full list of credits, code and Blender
-            files on{" "}
+            This website was built for a Codrops article and YouTube tutorial!!
+            Name and details are anonymoized for privacy. See full list of
+            credits, code and Blender files on{" "}
             <a
               href="https://github.com/andrewwoan/aimee-weis-papercraft-world"
               target="_blank"
