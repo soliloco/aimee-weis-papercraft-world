@@ -39,8 +39,15 @@ const InfoPanel = () => {
           <div className="info-box-title">Credits:</div>
 
           <p className="info-intro">
-            This website was built for a Codrops article and YouTube tutorial!!
-            Name and details are anonymoized for privacy. See full list of
+            This website was built for a Codrops article and{" "}
+            <a
+              href="https://www.youtube.com/watch?v=AD01pTr3gvw&feature=youtu.be"
+              target="_blank"
+              rel="noreferrer"
+            >
+              YouTube Tutorial
+            </a>
+            !! Name and details are anonymoized for privacy. See full list of
             credits, code and Blender files on{" "}
             <a
               href="https://github.com/andrewwoan/aimee-weis-papercraft-world"
