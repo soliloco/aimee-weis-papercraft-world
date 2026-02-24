@@ -56,8 +56,8 @@ const InfoPanel = () => {
             >
               GitHub
             </a>
-            ! and. Feel free to reach out if you got any questions or just wanna
-            say hi!
+            ! Feel free to reach out if you got any questions or just wanna say
+            hi!
           </p>
 
           <ul className="info-list">
