@@ -1,10 +1,10 @@
 import React, { Suspense } from "react";
 
 import MovingCharacters from "./models/Moving_Characters";
-import Winter from "./models/Scene_1_Winter";
-import Spring from "./models/Scene_2_Spring";
-import Summer from "./models/Scene_3_Summer";
-import Fall from "./models/Scene_4_Fall";
+import Gather from "./models/Scene_1_Winter";
+import Submit from "./models/Scene_2_Spring";
+import Receive from "./models/Scene_3_Summer";
+import Create from "./models/Scene_4_Fall";
 import CustomCamera from "./components/CustomCamera";
 
 const Scene = () => {
@@ -13,10 +13,10 @@ const Scene = () => {
       <CustomCamera />
       <Suspense fallback={null}>
         <MovingCharacters />
-        <Winter />
-        <Spring />
-        <Summer />
-        <Fall />
+        <Gather />
+        <Submit />
+        <Receive />
+        <Create />
       </Suspense>
     </>
   );

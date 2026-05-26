@@ -20,7 +20,7 @@
 .quadrant--tl {
   top: -20px;
   left: -20px;
-  background: #0d0d0d;
+  background: #7A8C72;
   background-image: url("/images/red.webp");
   background-size: cover;
   background-position: center;
@@ -30,7 +30,7 @@
 .quadrant--tr {
   top: -20px;
   right: -20px;
-  background: #1a1a1a;
+  background: #E8E8D8;
   background-image: url("/images/green.webp");
   background-size: cover;
   background-position: center;
@@ -40,7 +40,7 @@
 .quadrant--bl {
   bottom: -20px;
   left: -20px;
-  background: #1a1a1a;
+  background: #4A3830;
   background-image: url("/images/blue.webp");
   background-size: cover;
   background-position: center;
@@ -50,7 +50,7 @@
 .quadrant--br {
   bottom: -20px;
   right: -20px;
-  background: #0d0d0d;
+  background: #C9A8A8;
   background-image: url("/images/orange.webp");
   background-size: cover;
   background-position: center;

@@ -3,17 +3,17 @@ import "./InfoPanel.css";
 import { useCurveProgressStore } from "../../store/useCurveProgressStore";
 
 const progressMoveRanges = {
-  winter: { start: 0, end: 0.235 },
-  spring: { start: 0.235, end: 0.49 },
-  summer: { start: 0.49, end: 0.74 },
-  fall: { start: 0.74, end: 1 },
+  gather: { start: 0, end: 0.235 },
+  submit: { start: 0.235, end: 0.49 },
+  receive: { start: 0.49, end: 0.74 },
+  create: { start: 0.74, end: 1 },
 };
 
 const seasonImages = {
-  winter: "/images/blue.webp",
-  spring: "/images/green.webp",
-  summer: "/images/orange.webp",
-  fall: "/images/red.webp",
+  gather: "/images/blue.webp",
+  submit: "/images/green.webp",
+  receive: "/images/orange.webp",
+  create: "/images/red.webp",
 };
 
 const getSeason = (scrollProgress) => {
@@ -22,7 +22,7 @@ const getSeason = (scrollProgress) => {
       return season;
     }
   }
-  return "winter";
+  return "gather";
 };
 
 const InfoPanel = () => {
